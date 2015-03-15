@@ -1,3 +1,3 @@
 # append-css
 
-append css rule to document.
+Append css rule to document.
