@@ -1,7 +1,6 @@
 # append-css
 
-Append css rule to document.  
-Used in conjuction with the browserify.
+Append css rule to document, used in conjuction with the browserify.
 
     appendCSS = require 'append-css'
 
