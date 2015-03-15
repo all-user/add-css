@@ -1,0 +1,23 @@
+{
+  "name": "append-css",
+  "version": "0.0.1",
+  "description": "Add css rule to document",
+  "main": "index.js",
+  "author": "Keita Okamoto<ok@aaa.email.ne.jp>",
+  "repository": {
+    "type": "git",
+    "url": "https//github.com/all-user/append-css"
+  },
+  "bugs": {
+    "url": "https//github.com/all-user/append-css/issues"
+  },
+  "keywords": [
+    "css",
+    "javascript"
+  ],
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "coffee-script": "^1.9.1"
+  }
+}
