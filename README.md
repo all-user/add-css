@@ -1,17 +1,16 @@
 # append-css
 
-Append css rule to document, used in conjuction with the browserify.
+Append css rule to document.
 
-```coffee
-appendCSS = require 'append-css'
+```html
+<script src="./browser/build.js"></script>
+<script>
+var appendCSS = require('append-css');
 
-appendCSS '''
-  body { background: black; }
+// append new rule
+appendCSS('body { background: black; }');
 
-  .annotation {
-    width: 0;
-    heigth: 0;
-    visibility: hidden;
-  }
-'''
+// reseet appended rules
+appendCSS.reset();
+</script>
 ```
