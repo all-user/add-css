@@ -5,7 +5,8 @@ _init = ->
   document.head.appendChild styleEle
 
 appendCSS = (rule) ->
-  styleEle.sheet.insertRule rule, 0
+  sheet = styleEle.sheet
+  sheet.insertRule rule, sheet.cssRules.length
   styleEle
 
 appendCSS.reset = ->

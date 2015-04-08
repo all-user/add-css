@@ -11,7 +11,9 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
   };
 
   appendCSS = function(rule) {
-    styleEle.sheet.insertRule(rule, 0);
+    var sheet;
+    sheet = styleEle.sheet;
+    sheet.insertRule(rule, sheet.cssRules.length);
     return styleEle;
   };
 
