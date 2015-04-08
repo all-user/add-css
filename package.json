@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "coffee -o ./lib ./src/index.coffee && browserify -r ./lib/index.js:append-css > ./browser/build.js",
-    "test": "testem"
+    "test": "testem ci -P 4"
   },
   "keywords": [
     "css",
