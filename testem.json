@@ -1,0 +1,11 @@
+{
+  "framework": "mocha",
+  "src_files": [
+    "*.coffee"
+  ],
+  "serve_files": [
+    "./test/build.js"
+  ],
+  "before_tests": "npm build && coffee -o ./test ./test/index.coffee && browserify ./test/index.js -o ./test/build.js",
+  "after_tests": "rm ./test/*.js"
+}

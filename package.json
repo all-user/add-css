@@ -11,6 +11,10 @@
   "bugs": {
     "url": "https//github.com/all-user/append-css/issues"
   },
+  "scripts": {
+    "build": "coffee -o ./lib ./src/index.coffee && browserify -r ./lib/index.js:append-css > ./browser/build.js",
+    "test": "testem"
+  },
   "keywords": [
     "css",
     "javascript"
@@ -19,6 +23,9 @@
   "private": false,
   "devDependencies": {
     "browserify": "^9.0.3",
-    "coffee-script": "^1.9.1"
+    "browserify-test": "^1.1.0",
+    "coffee-script": "^1.9.1",
+    "mocha": "^2.2.4",
+    "phantomjs": "^1.9.16"
   }
 }
