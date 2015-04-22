@@ -1,16 +1,16 @@
 {
   "name": "append-css",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Add css rule to document",
   "main": "index.js",
   "author": "Keita Okamoto<ok@aaa.email.ne.jp>",
   "repository": {
     "type": "git",
-    "url": "https//github.com/all-user/append-css.git"
+    "url": "https://github.com/all-user/append-css.git"
   },
-  "homepage": "https//github.com/all-user/append-css",
+  "homepage": "https://github.com/all-user/append-css",
   "bugs": {
-    "url": "https//github.com/all-user/append-css/issues"
+    "url": "https://github.com/all-user/append-css/issues"
   },
   "scripts": {
     "build": "coffee -o ./lib ./src/index.coffee && browserify -r ./lib/index.js:append-css > ./browser/build.js",
