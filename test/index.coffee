@@ -246,3 +246,24 @@ describe 'append css', ->
           assert.equal 'rgb(51, 170, 255)', getComputedStyle(inndiv).borderBottomColor
         done()
       , 50
+
+  describe 'change style element', ->
+    it 'append css in new style element', (done) ->
+      oldStyle = appendCSS '.inner-div { background: rgb(57, 33, 158); }'
+      newStyle = appendCSS.newStyle()
+      _newStyle = appendCSS '''
+        #test-div {
+          background: rgb(123,45,67);
+          width: 1234px;
+        }
+      '''
+      setTimeout ->
+        innerDivs = Array::slice.call document.querySelectorAll('.inner-div'), 0
+        innerDivs.forEach (inndiv) ->
+          assert.equal 'rgb(57, 33, 158)', getComputedStyle(inndiv).backgroundColor
+        assert.equal 'rgb(123, 45, 67)', getComputedStyle(div).backgroundColor
+        assert.equal '1234px', getComputedStyle(div).width
+        assert.notEqual oldStyle, newStyle
+        assert.equal newStyle, _newStyle
+        done()
+      , 50

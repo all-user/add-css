@@ -22,6 +22,10 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
     return _init();
   };
 
+  appendCSS.newStyle = function() {
+    return _init();
+  };
+
   _init();
 
   module.exports = appendCSS;

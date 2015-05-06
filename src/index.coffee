@@ -13,6 +13,9 @@ appendCSS.reset = ->
   document.head.removeChild styleEle
   _init()
 
+appendCSS.newStyle = ->
+  _init()
+
 _init()
 
 module.exports = appendCSS
