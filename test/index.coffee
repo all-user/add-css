@@ -1,50 +1,55 @@
 assert = require 'assert'
 
 describe 'append css', ->
-  appendCSS = require '../lib'
+  AppendCss = require '../lib'
   div = document.createElement 'div'
   div.id = 'test-div'
   innerDiv = document.createElement 'div'
   innerDiv.className = 'inner-div'
-
+  styles = []
 
   beforeEach 'css reset phase', (done) ->
-    appendCSS.reset()
+    styles.forEach (s) => s.dispose()
+    styles = []
     done()
 
 
   describe 'rule apply to style', ->
     it 'width', (done) ->
       document.body.appendChild div
-      appendCSS '#test-div { width: 500px; }'
+      appendCss = new AppendCss '#test-div { width: 500px; }'
+      styles.push appendCss
       setTimeout ->
         assert.equal '500px', getComputedStyle(div).width
         done()
       , 50
 
     it 'height', (done) ->
-      appendCSS '#test-div { height: 800px; }'
+      appendCss = AppendCss '#test-div { height: 800px; }'
+      styles.push appendCss
       setTimeout ->
         assert.equal '800px', getComputedStyle(div).height
         done()
       , 50
 
     it 'background color', (done) ->
-      appendCSS '#test-div { background: #fff; }'
+      appendCss = AppendCSS '#test-div { background: #fff; }'
+      styles.push appendCss
       setTimeout ->
         assert.equal 'rgb(255, 255, 255)', getComputedStyle(div).backgroundColor
         done()
       , 50
 
     it 'color', (done) ->
-      appendCSS '#test-div { color: #0aa; }'
+      appendCss = AppendCss '#test-div { color: #0aa; }'
+      styles.push appendCss
       setTimeout ->
         assert.equal 'rgb(0, 170, 170)', getComputedStyle(div).color
         done()
       , 50
 
     it 'apply multipul styles', (done) ->
-      appendCSS '''
+      appendCss = AppendCss '''
         #test-div {
           background: #445;
           color: #f7f7fa;

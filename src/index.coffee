@@ -1,21 +1,21 @@
-styleEle = null
+class AppendCss
+  constructor: (cssText) ->
+    @cssText = cssText
+    @styleEle = document.createElement 'style'
+    @styleEle.textContent = @cssText
+    document.head.appendChild @styleEle
 
-_init = ->
-  styleEle = document.createElement 'style'
-  document.head.appendChild styleEle
+  enable: ->
+    @styleEle.textContent = @cssText
 
-appendCSS = (rule) ->
-  sheet = styleEle.sheet
-  sheet.insertRule rule, sheet.cssRules.length
-  styleEle
+  disable: ->
+    @styleEle.textContent = ''
 
-appendCSS.reset = ->
-  document.head.removeChild styleEle
-  _init()
+  setCss: (cssText) ->
+    @styleEle.textContent = cssText
 
-appendCSS.newStyle = ->
-  _init()
+  dispose: ->
+    document.head.removeChild @styleEle
+    @cssText = @styleEle = null
 
-_init()
-
-module.exports = appendCSS
+module.exports = AppendCss
