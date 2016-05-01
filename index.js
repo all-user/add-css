@@ -1,2 +1,1 @@
-var m = require('./lib');
-module.exports = m;
+module.exports = require('lib/index.js');
