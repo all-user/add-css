@@ -1,7 +1,7 @@
 {
   "name": "append-css",
   "version": "0.1.6",
-  "description": "Add css rule to document",
+  "description": "Add css rule to document.",
   "main": "index.js",
   "author": "Keita Okamoto<ok@aaa.email.ne.jp>",
   "repository": {
@@ -13,8 +13,16 @@
     "url": "https://github.com/all-user/append-css/issues"
   },
   "scripts": {
-    "build": "coffee -o ./lib ./src/index.coffee && browserify -r ./lib/index.js:append-css > ./browser/build.js",
-    "test": "testem ci -P 4"
+    "help": "npm-run-help",
+    "test": "testem",
+    "test:ci": "testem ci -P 4",
+    "build:browser": "browserify -t babelify -r ./src/index.js:append-css -o ./browser/build.js",
+    "build:nodejs": "babel ./src -d ./lib",
+    "build": "npm-run-all build:*",
+    "watch:browser": "watchify -t babelify -r ./src/index.js:append-css -o ./browser/build.js -v",
+    "watch:nodejs": "babel -w ./src -d ./lib",
+    "watch": "npm-run-all watch:*",
+    "release": "BABEL_ENV=production npm run build"
   },
   "keywords": [
     "css",
@@ -23,10 +31,22 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-espower": "^2.1.2",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-es2016": "^6.0.11",
+    "babel-preset-power-assert": "^1.0.0",
+    "babelify": "^7.3.0",
     "browserify": "^9.0.3",
     "coffee-script": "^1.9.1",
-    "testem": "^0.8.0-0",
+    "eslint": "^2.9.0",
     "mocha": "^2.2.4",
-    "phantomjs": "^1.9.16"
+    "npm-run-all": "^1.8.0",
+    "npm-run-help": "^1.1.0",
+    "phantomjs": "^1.9.16",
+    "power-assert": "^1.3.1",
+    "testem": "^0.8.0-0",
+    "watchify": "^3.7.0"
   }
 }
