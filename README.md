@@ -1,16 +1,34 @@
 # append-css
 
-Append css rule to document.
+Append css rule to document.  
+This is wrapper for `<style></style>` element.
 
 ```html
 <script src="./browser/build.js"></script>
 <script>
-var appendCSS = require('append-css');
+var AppendCss = require('append-css');
 
 // append new rule
-appendCSS('body { background: black; }');
+let appendedRules = new AppendCss(`
+  body {
+    background: black;
+  }
+`);
 
-// reseet appended rules
-appendCSS.reset();
+// disable rules
+appendedRules.disable();
+
+// change rules
+appendedRules.textContent = `
+  body {
+    width: 100%;
+  }
+`;
+
+// enable rules
+appendedRules.enable();
+
+// dispose appended rules and <style></style> element
+appendedRules.dispose();
 </script>
 ```
