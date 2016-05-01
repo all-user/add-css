@@ -14,8 +14,8 @@
   },
   "scripts": {
     "help": "npm-run-help",
-    "test": "testem",
-    "test:ci": "testem ci -P 4",
+    "test": "testem ci",
+    "test:local": "testem",
     "build:browser": "browserify -t babelify -r ./src/index.js:append-css -o ./browser/build.js",
     "build:nodejs": "babel ./src -d ./lib",
     "build": "npm-run-all build:*",
