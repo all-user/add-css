@@ -10,7 +10,7 @@ describe('append css', function() {
   innerDiv.className = 'inner-div';
   let appendedRulesList = [];
 
-  beforeEach('css reset phase', done => {
+  afterEach('css reset phase', done => {
     if (appendedRulesList.length === 0) { done(); return; }
 
     appendedRulesList.forEach(s => {
@@ -363,7 +363,6 @@ describe('append css', function() {
   describe('dispose', () => {
     it('dispose style element', () => {
       let appendedRules = new AppendCss('#test-div { background: rgb(22, 33, 44); }');
-      appendedRulesList.push(appendedRules);
 
       return new Promise((resolve, reject) => {
         assert.equal('rgb(22, 33, 44)', getComputedStyle(div).backgroundColor);
@@ -374,6 +373,38 @@ describe('append css', function() {
       }).then(() => {
         assert.notEqual('rgb(22, 33, 44)', getComputedStyle(div).backgroundColor);
         assert.equal(document.head.contains(appendedRules.styleEle), false);
+      });
+    });
+  });
+
+  describe('prepend option', () => {
+    it('document.head.firstChild === null', () => {
+      let appendedRules;
+      let newHead;
+      let oldHead;
+
+      return new Promise((resolve, reject) => {
+        newHead = document.createElement('head');
+        oldHead = document.head;
+        document.documentElement.replaceChild(newHead, oldHead);
+        resolve();
+      }).then(() => {
+        assert.equal(document.head.firstChild, null);
+        appendedRules = new AppendCss('#test-div { background: rgb(22, 33, 44); }', { prepend: true });
+        assert.equal('rgb(22, 33, 44)', getComputedStyle(div).backgroundColor);
+        assert.equal(document.head.firstChild, appendedRules.styleEle);
+      }).then(() => {
+        document.documentElement.replaceChild(oldHead, newHead);
+      });
+    });
+
+    it('document.head.childNodes.length > 0', () => {
+      let appendedRules = new AppendCss('#test-div { background: rgb(22, 33, 44); }', { prepend: true });
+      appendedRulesList.push(appendedRules);
+
+      return new Promise((resolve, reject) => {
+        assert.equal(document.head.firstChild, appendedRules.styleEle);
+        resolve();
       });
     });
   });

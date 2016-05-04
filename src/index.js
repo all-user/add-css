@@ -1,8 +1,14 @@
 class AppendCss {
-  constructor(css) {
+  constructor(css, { prepend } = {
+    prepend: false
+  }) {
     let ele = document.createElement('style');
     ele.textContent = css;
-    document.head.appendChild(ele);
+    if (document.head.firstChild && prepend === true) {
+      document.head.insertBefore(ele, document.head.firstChild);
+    } else {
+      document.head.appendChild(ele);
+    }
     this.cssText = css;
     this.styleEle = ele;
   }
