@@ -7,7 +7,7 @@ This is wrapper for `<style></style>` element.
 ```html
 <script src="./browser/build.js"></script>
 <script>
-var AppendCss = require('append-css');
+const AppendCss = require('append-css');
 
 // append new rule
 let appendedRules = new AppendCss(`
@@ -32,4 +32,15 @@ appendedRules.enable();
 // dispose appended rules and <style></style> element
 appendedRules.dispose();
 </script>
+```
+
+## options
+```javascript
+constructor(cssText, options);
+```
+
+### `prepend`
+Append `<style></style>` element to before `document.head.firstChild`.
+```javascript
+{ prepend: true }
 ```
